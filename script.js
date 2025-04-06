@@ -1,28 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const questionContainers = document.querySelectorAll('.question-container');
-    let score = 0;
-    let totalQuestions = questionContainers.length;
 
-    questionContainers.forEach((container, index) => {
+document.addEventListener('DOMContentLoaded', () => {
+    let score = 0;
+    const allCheckButtons = document.querySelectorAll('.check-answer-btn');
+    const allQuestionContainers = document.querySelectorAll('.question-container');
+    const totalQuestions = allQuestionContainers.length;
+
+    allQuestionContainers.forEach(container => {
         const checkBtn = container.querySelector('.check-answer-btn');
         const answerButtons = container.querySelectorAll('.answer-button');
         const feedback = container.querySelector('.feedback');
         let answered = false;
 
+        answerButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (answered) return;
+                answerButtons.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                btn.style.borderColor = '#0a66c2';
+                btn.style.backgroundColor = '#e6f0ff';
+                btn.style.boxShadow = '0 0 0 3px rgba(10, 102, 194, 0.3)';
+            });
+        });
+
         checkBtn.addEventListener('click', () => {
             if (answered) return;
+
+            const selected = container.querySelector('.answer-button.selected');
 
             answerButtons.forEach(button => {
                 const isCorrect = button.getAttribute('data-correct') === 'true';
                 if (isCorrect) {
                     button.classList.add('correct');
-                } else if (button.classList.contains('selected')) {
+                } else if (button === selected) {
                     button.classList.add('incorrect');
                 }
                 button.disabled = true;
             });
 
-            const selected = container.querySelector('.answer-button.selected');
             if (selected && selected.getAttribute('data-correct') === 'true') {
                 score++;
             }
@@ -32,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBtn.clickedOnce = true;
 
             const parentSection = container.closest('.section');
-            const allQuestions = parentSection.querySelectorAll('.question-container');
-            const allAnswered = Array.from(allQuestions).every(q =>
+            const sectionQuestions = parentSection.querySelectorAll('.question-container');
+            const allAnswered = Array.from(sectionQuestions).every(q =>
                 q.querySelector('.check-answer-btn').clickedOnce
             );
 
@@ -42,22 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (nextBtn) nextBtn.disabled = false;
             }
 
-            const allAnsweredGlobal = Array.from(document.querySelectorAll('.check-answer-btn')).every(btn => btn.clickedOnce);
+            const allAnsweredGlobal = Array.from(allCheckButtons).every(btn => btn.clickedOnce);
             if (allAnsweredGlobal) {
                 showResults(score, totalQuestions);
             }
-        });
-
-        answerButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (answered) return;
-                answerButtons.forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                // Highlight border to indicate selection
-                btn.style.borderColor = '#0a66c2';
-                btn.style.backgroundColor = '#e6f0ff';
-                btn.style.boxShadow = '0 0 0 3px rgba(10, 102, 194, 0.3)';
-            });
         });
     });
 });
