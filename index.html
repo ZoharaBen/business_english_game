@@ -1,136 +1,784 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Business English Meeting Skills Quiz</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0a1929;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-    }
-    .question-container {
-      background: #fff;
-      color: #000;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-    }
-    .question {
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .answer-button {
-      padding: 10px 15px;
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      background-color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .answer-button:hover {
-      border-color: #0a66c2;
-    }
-    .answer-button.selected {
-      border-color: #0a66c2;
-      background-color: #e6f0ff;
-    }
-    .answer-button.correct {
-      background-color: #d4edda;
-      border-color: #28a745;
-    }
-    .answer-button.incorrect {
-      background-color: #f8d7da;
-      border-color: #dc3545;
-    }
-    .feedback {
-      margin-top: 15px;
-      display: none;
-    }
-    .feedback.visible {
-      display: block;
-      background: #e0f0ff;
-      padding: 10px;
-      border-left: 4px solid #0a66c2;
-      border-radius: 4px;
-    }
-    .check-answer-btn {
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #0a66c2;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .results {
-      margin-top: 40px;
-      padding: 30px;
-      background-color: #fff;
-      color: #000;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .score-circle {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      border: 4px solid #0a66c2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business English Meeting Skills Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+    <style>
+        :root {
+            --background: #0a1929;
+            --primary: #0a66c2;
+            --primary-dark: #074d92;
+            --secondary: #ffffff;
+            --accent: #d4af37;
+            --text-light: #ffffff;
+            --text-dark: #0a1929;
+            --correct: #4caf50;
+            --wrong: #f44336;
+            --gray: #718096;
+            --light-gray: #e2e8f0;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--background);
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.75rem;
+            margin-bottom: 16px;
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+        
+        header p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation Buttons - Fixed at top */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            padding: 15px 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-button {
+            flex: 1;
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            padding: 20px 15px;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 220px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-bottom-color: var(--accent);
+        }
+        
+        .nav-button.active {
+            background-color: var(--primary);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(10, 102, 194, 0.2);
+            border-bottom-color: var(--accent);
+        }
+        
+        .nav-button-icon {
+            margin-bottom: 12px;
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        .nav-button-text {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        /* Content Sections */
+        .quiz-sections {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Individual Quiz Sections */
+        .section {
+            background-color: var(--secondary);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            color: var(--text-dark);
+            margin-bottom: 60px;
+            scroll-margin-top: 150px; /* Ensures section is visible below sticky nav when scrolled to */
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .quiz-section {
+            padding: 40px;
+        }
+        
+        .section-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(10, 102, 194, 0.2);
+        }
+        
+        .section-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary);
+        }
+        
+        .question-container {
+            background-color: #f8fafc;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .question {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        /* Answer button styles */
+        .answer-button {
+            padding: 16px 20px;
+            margin: 5px 0;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+        
+        .answer-button:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .answer-button.correct {
+            background-color: #c8e6c9; /* green */
+            border-color: #4caf50;
+        }
+        
+        .answer-button.incorrect {
+            background-color: #ffcdd2; /* red */
+            border-color: #f44336;
+        }
+        
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            border-radius: 50%;
+            margin-right: 16px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .answer-button:hover .option-letter {
+            background-color: rgba(10, 102, 194, 0.1);
+        }
+        
+        .answer-button.correct .option-letter {
+            background-color: var(--correct);
+            color: white;
+        }
+        
+        .answer-button.incorrect .option-letter {
+            background-color: var(--wrong);
+            color: white;
+        }
+        
+        .feedback {
+            margin-top: 24px;
+            padding: 16px 20px;
+            background-color: rgba(10, 102, 194, 0.05);
+            border-left: 3px solid var(--primary);
+            border-radius: 0 4px 4px 0;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .feedback.visible {
+            display: block;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 36px;
+        }
+        
+        button.nav-btn {
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(10, 102, 194, 0.2);
+        }
+        
+        button.nav-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 4px 8px rgba(10, 102, 194, 0.3);
+        }
+        
+        button.nav-btn:active {
+            transform: translateY(1px);
+        }
+        
+        button.nav-btn:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .next-button {
+            display: flex;
+            align-items: center;
+        }
+        
+        .copy-prompt {
+            background-color: #f8fafc;
+            border: 1px solid var(--light-gray);
+            border-left: 3px solid var(--primary);
+            border-radius: 4px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+        }
+        
+        .copy-prompt pre {
+            white-space: pre-wrap;
+            font-family: 'Inter', sans-serif;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+        
+        .copy-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .results {
+            text-align: center;
+            padding: 60px 40px;
+            animation: fadeIn 0.5s ease;
+            margin-top: 60px;
+            background-color: var(--secondary);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 36px;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            box-shadow: 0 6px 16px rgba(10, 102, 194, 0.15);
+        }
+        
+        .result-message {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* List styling */
+        ul {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-button {
+                flex: 0 0 calc(50% - 20px);
+                max-width: none;
+            }
+            
+            .section {
+                scroll-margin-top: 200px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .nav-container {
+                padding: 10px 0;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+            
+            .nav-button {
+                flex: 0 0 calc(50% - 10px);
+                padding: 12px 10px;
+            }
+            
+            .nav-button-icon {
+                margin-bottom: 8px;
+            }
+            
+            .nav-button-text {
+                font-size: 14px;
+            }
+            
+            .quiz-section {
+                padding: 24px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            button.nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                scroll-margin-top: 240px;
+            }
+        }
+
+/* TechGlobe Logo Styling */
+.techglobe-logo {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.globe-icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.main-text {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1;
+}
+.tagline {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 5px;
+}
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .techglobe-logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .globe-icon {
+    margin-bottom: 10px;
+  }
+  
+  .main-text {
+    font-size: 36px;
+  }
+  
+  .tagline {
+    font-size: 14px;
+  }
+}
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Business English Meeting Skills Quiz</h1>
-
-    <div class="question-container">
-      <div class="question">
-        Which of the following is generally not recommended as small talk in a professional meeting?
+   <div class="container">
+        <header>
+            <div class="logo-container">
+    <div class="techglobe-logo">
+      <div class="globe-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#ffffff" stroke-width="10"/>
+          <path d="M100,10 v180" stroke="#ffffff" stroke-width="10"/>
+          <path d="M10,100 h180" stroke="#ffffff" stroke-width="10"/>
+          <path d="M30,50 C50,30 150,30 170,50" stroke="#ffffff" stroke-width="10" fill="none"/>
+          <path d="M30,150 C50,170 150,170 170,150" stroke="#ffffff" stroke-width="10" fill="none"/>
+        </svg>
       </div>
-      <div class="options">
-        <button class="answer-button" data-correct="false">"Did you do anything fun over the weekend?"</button>
-        <button class="answer-button" data-correct="true">"Have you been following the elections lately?"</button>
-        <button class="answer-button" data-correct="false">"Is this your first time working on a project like this?"</button>
-        <button class="answer-button" data-correct="false">"I heard there's a great coffee place nearby."</button>
+      <div class="logo-text">
+        <div class="main-text">TechGlobe</div>
+        <div class="tagline">Connecting Innovation Across the Globe</div>
       </div>
-      <div class="feedback"><strong>Feedback:</strong> Politics can be divisive in professional settings. Stick to neutral topics.</div>
-      <button class="check-answer-btn">Check Answer</button>
     </div>
+</div>
+            <h1>Business English Meeting Skills</h1>
+            <p>Enhance your professional communication competencies</p>
+        </header>
 
-    <!-- More questions can be added here using the same structure -->
+        <!-- Navigation Buttons - Fixed at top -->
+        <div class="nav-container">
+            <div class="nav-buttons">
+                <a href="#section1" class="nav-button active" onclick="setActiveButton(0)">
+                    <div class="nav-button-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-button-text">Small Talk</div>
+                </a>
+                <a href="#section2" class="nav-button" onclick="setActiveButton(1)">
+                    <div class="nav-button-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-button-text">Starting the Meeting</div>
+                </a>
+                <a href="#section3" class="nav-button" onclick="setActiveButton(2)">
+                    <div class="nav-button-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-button-text">Ending the Meeting</div>
+                </a>
+                <a href="#section4" class="nav-button" onclick="setActiveButton(3)">
+                    <div class="nav-button-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                        </svg>
+                    </div>
+                    <div class="nav-button-text">AI Practice</div>
+                </a>
+            </div>
+        </div>
 
-    <div class="results" style="display:none;">
-      <div class="score-circle" id="final-score">0/1</div>
-      <h2>Your Score</h2>
-      <p>Thank you for completing the quiz!</p>
-    </div>
-  </div>
+        <!-- Quiz Sections Container -->
+        <div class="quiz-sections">
+            <!-- Section 1: Small Talk -->
+            <div id="section1" class="section">
+                <div class="quiz-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+                            </svg>
+                        </div>
+                        <h2>Small Talk Challenge</h2>
+                    </div>
 
-  <!-- 🔗 This script link is essential for game logic to work -->
+                    <!-- Question 1 -->
+                    <div class="question-container">
+                        <div class="question">
+                            Which of the following is generally not recommended as small talk in a professional meeting?
+                        </div>
+                        <div class="options">
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">A</span>
+                                "Did you do anything fun over the weekend?"
+                            </button>
+                            <button class="answer-button" data-correct="true">
+                                <span class="option-letter">B</span>
+                                "Have you been following the elections lately?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">C</span>
+                                "Is this your first time working on a project like this?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">D</span>
+                                "I heard there's a great coffee place nearby."
+                            </button>
+                        </div>
+                        <div class="feedback">
+                            <strong>Feedback:</strong> Politics can be divisive in professional settings. Stick to neutral topics like weekend activities, work experiences, or local recommendations.
+                        </div>
+                        <button class="check-answer-btn">Check Answer</button>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-container">
+                        <div class="question">
+                            You want to build rapport at the start of a virtual meeting. What's the most effective phrase to use?
+                        </div>
+                        <div class="options">
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">A</span>
+                                "Let's just get started."
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">B</span>
+                                "Is this going to take long?"
+                            </button>
+                            <button class="answer-button" data-correct="true">
+                                <span class="option-letter">C</span>
+                                "Nice to see everyone—how's your day going so far?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">D</span>
+                                "Please mute your mics unless you're talking."
+                            </button>
+                        </div>
+                        <div class="feedback">
+                            <strong>Feedback:</strong> This friendly greeting shows genuine interest in participants and helps establish a positive tone for the meeting.
+                        </div>
+                        <button class="check-answer-btn">Check Answer</button>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-container">
+                        <div class="question">
+                            Which of these topics is safest for international small talk?
+                        </div>
+                        <div class="options">
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">A</span>
+                                Personal finances
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">B</span>
+                                Family issues
+                            </button>
+                            <button class="answer-button" data-correct="true">
+                                <span class="option-letter">C</span>
+                                Hobbies and interests
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">D</span>
+                                Opinions on government policies
+                            </button>
+                        </div>
+                        <div class="feedback">
+                            <strong>Feedback:</strong> Hobbies and interests are universally safe topics that allow for positive sharing without risking cultural sensitivities.
+                        </div>
+                        <button class="check-answer-btn">Check Answer</button>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-container">
+                        <div class="question">
+                            Which of the following best follows up on a small talk response like: "I just got back from Italy"?
+                        </div>
+                        <div class="options">
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">A</span>
+                                "Oh, I don't like traveling."
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">B</span>
+                                "Why would you go there?"
+                            </button>
+                            <button class="answer-button" data-correct="true">
+                                <span class="option-letter">C</span>
+                                "Oh nice—what was the highlight of the trip?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">D</span>
+                                "Cool. Anyway, let's move on."
+                            </button>
+                        </div>
+                        <div class="feedback">
+                            <strong>Feedback:</strong> This response shows genuine interest and encourages them to share more about their experience.
+                        </div>
+                        <button class="check-answer-btn">Check Answer</button>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-container">
+                        <div class="question">
+                            You meet someone new in a business meeting. Which question is too direct or overly personal?
+                        </div>
+                        <div class="options">
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">A</span>
+                                "Where are you based?"
+                            </button>
+                            <button class="answer-button" data-correct="true">
+                                <span class="option-letter">B</span>
+                                "Are you married?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">C</span>
+                                "What do you do in your role?"
+                            </button>
+                            <button class="answer-button" data-correct="false">
+                                <span class="option-letter">D</span>
+                                "Have you worked with this team before?"
+                            </button>
+                        </div>
+                        <div class="feedback">
+                            <strong>Feedback:</strong> Questions about marital status are considered too personal in most professional contexts. Focus on work-related topics or general location instead.
+                        </div>
+                        <button class="check-answer-btn">Check Answer</button>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button disabled class="back-button nav-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            Previous
+                        </button>
+                        <button class="next-button nav-btn" onclick="scrollToSection('section2')" disabled id="next-btn-1">
+                            Next Section
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Starting the Meeting -->
+            <div id="section2" class="section">
+                <div class="quiz-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"/>
+                            </svg>
+                        </div>
+
+  <!-- Make sure script.js is in the same folder -->
   <script src="script.js"></script>
 </body>
 </html>
