@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business English Meeting Skills Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business English Meeting Skills Quiz</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css" rel="stylesheet"/>
+<style>
         :root {
             --background: #0a1929;
             --primary: #0a66c2;
@@ -531,254 +532,247 @@
     </style>
 </head>
 <body>
-   <div class="container">
-        <header>
-            <div class="logo-container">
-    <div class="techglobe-logo">
-      <div class="globe-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#ffffff" stroke-width="10"/>
-          <path d="M100,10 v180" stroke="#ffffff" stroke-width="10"/>
-          <path d="M10,100 h180" stroke="#ffffff" stroke-width="10"/>
-          <path d="M30,50 C50,30 150,30 170,50" stroke="#ffffff" stroke-width="10" fill="none"/>
-          <path d="M30,150 C50,170 150,170 170,150" stroke="#ffffff" stroke-width="10" fill="none"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <div class="main-text">TechGlobe</div>
-        <div class="tagline">Connecting Innovation Across the Globe</div>
-      </div>
-    </div>
+<div class="container">
+<header>
+<div class="logo-container">
+<div class="techglobe-logo">
+<div class="globe-icon">
+<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" fill="none" r="90" stroke="#ffffff" stroke-width="10"></circle>
+<path d="M100,10 v180" stroke="#ffffff" stroke-width="10"></path>
+<path d="M10,100 h180" stroke="#ffffff" stroke-width="10"></path>
+<path d="M30,50 C50,30 150,30 170,50" fill="none" stroke="#ffffff" stroke-width="10"></path>
+<path d="M30,150 C50,170 150,170 170,150" fill="none" stroke="#ffffff" stroke-width="10"></path>
+</svg>
 </div>
-            <h1>Business English Meeting Skills</h1>
-            <p>Enhance your professional communication competencies</p>
-        </header>
-
-        <!-- Navigation Buttons - Fixed at top -->
-        <div class="nav-container">
-            <div class="nav-buttons">
-                <a href="#section1" class="nav-button active" onclick="setActiveButton(0)">
-                    <div class="nav-button-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
-                        </svg>
-                    </div>
-                    <div class="nav-button-text">Small Talk</div>
-                </a>
-                <a href="#section2" class="nav-button" onclick="setActiveButton(1)">
-                    <div class="nav-button-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"/>
-                        </svg>
-                    </div>
-                    <div class="nav-button-text">Starting the Meeting</div>
-                </a>
-                <a href="#section3" class="nav-button" onclick="setActiveButton(2)">
-                    <div class="nav-button-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                        </svg>
-                    </div>
-                    <div class="nav-button-text">Ending the Meeting</div>
-                </a>
-                <a href="#section4" class="nav-button" onclick="setActiveButton(3)">
-                    <div class="nav-button-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                        </svg>
-                    </div>
-                    <div class="nav-button-text">AI Practice</div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Quiz Sections Container -->
-        <div class="quiz-sections">
-            <!-- Section 1: Small Talk -->
-            <div id="section1" class="section">
-                <div class="quiz-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
-                            </svg>
+<div class="logo-text">
+<div class="main-text">TechGlobe</div>
+<div class="tagline">Connecting Innovation Across the Globe</div>
+</div>
+</div>
+</div>
+<h1>Business English Meeting Skills</h1>
+<p>Enhance your professional communication competencies</p>
+</header>
+<!-- Navigation Buttons - Fixed at top -->
+<div class="nav-container">
+<div class="nav-buttons">
+<a class="nav-button active" href="#section1" onclick="setActiveButton(0)">
+<div class="nav-button-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"></path>
+</svg>
+</div>
+<div class="nav-button-text">Small Talk</div>
+</a>
+<a class="nav-button" href="#section2" onclick="setActiveButton(1)">
+<div class="nav-button-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"></path>
+</svg>
+</div>
+<div class="nav-button-text">Starting the Meeting</div>
+</a>
+<a class="nav-button" href="#section3" onclick="setActiveButton(2)">
+<div class="nav-button-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+</svg>
+</div>
+<div class="nav-button-text">Ending the Meeting</div>
+</a>
+<a class="nav-button" href="#section4" onclick="setActiveButton(3)">
+<div class="nav-button-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+</svg>
+</div>
+<div class="nav-button-text">AI Practice</div>
+</a>
+</div>
+</div>
+<!-- Quiz Sections Container -->
+<div class="quiz-sections">
+<!-- Section 1: Small Talk -->
+<div class="section" id="section1">
+<div class="quiz-section">
+<div class="section-header">
+<div class="section-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"></path>
+</svg>
+</div>
+<h2>Small Talk Challenge</h2>
+</div>
+<!-- Question 1 -->
+<div class="question-container">
+<div class="question">
+                            Which of the following is generally not recommended as small talk in a professional meeting?
                         </div>
-                        <h2>Small Talk Challenge</h2>
-                    </div>
-
-                    <!-- Question 1 -->
-                    <div class="question-container">
-                        <div class="question">
-                            Which of the following is generally <strong>NOT</strong> recommended as small talk in a professional meeting?
-                        </div>
-                        <div class="options">
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">A</span>
+<div class="options">
+<button class="answer-button" data-correct="false">
+<span class="option-letter">A</span>
                                 "Did you do anything fun over the weekend?"
                             </button>
-                            <button class="answer-button" data-correct="true">
-                                <span class="option-letter">B</span>
+<button class="answer-button" data-correct="true">
+<span class="option-letter">B</span>
                                 "Have you been following the elections lately?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">C</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">C</span>
                                 "Is this your first time working on a project like this?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">D</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">D</span>
                                 "I heard there's a great coffee place nearby."
                             </button>
+</div>
+<div class="feedback">
+<strong>Feedback:</strong> Politics can be divisive in professional settings. Stick to neutral topics like weekend activities, work experiences, or local recommendations.
                         </div>
-                        <div class="feedback">
-                            <strong>Feedback:</strong> Politics can be divisive in professional settings. Stick to neutral topics like weekend activities, work experiences, or local recommendations.
-                        </div>
-                        <button class="check-answer-btn">Check Answer</button>
-                    </div>
-
-                    <!-- Question 2 -->
-                    <div class="question-container">
-                        <div class="question">
+<button class="check-answer-btn">Check Answer</button>
+</div>
+<!-- Question 2 -->
+<div class="question-container">
+<div class="question">
                             You want to build rapport at the start of a virtual meeting. What's the most effective phrase to use?
                         </div>
-                        <div class="options">
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">A</span>
+<div class="options">
+<button class="answer-button" data-correct="false">
+<span class="option-letter">A</span>
                                 "Let's just get started."
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">B</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">B</span>
                                 "Is this going to take long?"
                             </button>
-                            <button class="answer-button" data-correct="true">
-                                <span class="option-letter">C</span>
+<button class="answer-button" data-correct="true">
+<span class="option-letter">C</span>
                                 "Nice to see everyone—how's your day going so far?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">D</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">D</span>
                                 "Please mute your mics unless you're talking."
                             </button>
+</div>
+<div class="feedback">
+<strong>Feedback:</strong> This friendly greeting shows genuine interest in participants and helps establish a positive tone for the meeting.
                         </div>
-                        <div class="feedback">
-                            <strong>Feedback:</strong> This friendly greeting shows genuine interest in participants and helps establish a positive tone for the meeting.
-                        </div>
-                        <button class="check-answer-btn">Check Answer</button>
-                    </div>
-
-                    <!-- Question 3 -->
-                    <div class="question-container">
-                        <div class="question">
+<button class="check-answer-btn">Check Answer</button>
+</div>
+<!-- Question 3 -->
+<div class="question-container">
+<div class="question">
                             Which of these topics is safest for international small talk?
                         </div>
-                        <div class="options">
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">A</span>
+<div class="options">
+<button class="answer-button" data-correct="false">
+<span class="option-letter">A</span>
                                 Personal finances
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">B</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">B</span>
                                 Family issues
                             </button>
-                            <button class="answer-button" data-correct="true">
-                                <span class="option-letter">C</span>
+<button class="answer-button" data-correct="true">
+<span class="option-letter">C</span>
                                 Hobbies and interests
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">D</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">D</span>
                                 Opinions on government policies
                             </button>
+</div>
+<div class="feedback">
+<strong>Feedback:</strong> Hobbies and interests are universally safe topics that allow for positive sharing without risking cultural sensitivities.
                         </div>
-                        <div class="feedback">
-                            <strong>Feedback:</strong> Hobbies and interests are universally safe topics that allow for positive sharing without risking cultural sensitivities.
-                        </div>
-                        <button class="check-answer-btn">Check Answer</button>
-                    </div>
-
-                    <!-- Question 4 -->
-                    <div class="question-container">
-                        <div class="question">
+<button class="check-answer-btn">Check Answer</button>
+</div>
+<!-- Question 4 -->
+<div class="question-container">
+<div class="question">
                             Which of the following best follows up on a small talk response like: "I just got back from Italy"?
                         </div>
-                        <div class="options">
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">A</span>
+<div class="options">
+<button class="answer-button" data-correct="false">
+<span class="option-letter">A</span>
                                 "Oh, I don't like traveling."
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">B</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">B</span>
                                 "Why would you go there?"
                             </button>
-                            <button class="answer-button" data-correct="true">
-                                <span class="option-letter">C</span>
+<button class="answer-button" data-correct="true">
+<span class="option-letter">C</span>
                                 "Oh nice—what was the highlight of the trip?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">D</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">D</span>
                                 "Cool. Anyway, let's move on."
                             </button>
+</div>
+<div class="feedback">
+<strong>Feedback:</strong> This response shows genuine interest and encourages them to share more about their experience.
                         </div>
-                        <div class="feedback">
-                            <strong>Feedback:</strong> This response shows genuine interest and encourages them to share more about their experience.
-                        </div>
-                        <button class="check-answer-btn">Check Answer</button>
-                    </div>
-
-                    <!-- Question 5 -->
-                    <div class="question-container">
-                        <div class="question">
+<button class="check-answer-btn">Check Answer</button>
+</div>
+<!-- Question 5 -->
+<div class="question-container">
+<div class="question">
                             You meet someone new in a business meeting. Which question is too direct or overly personal?
                         </div>
-                        <div class="options">
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">A</span>
+<div class="options">
+<button class="answer-button" data-correct="false">
+<span class="option-letter">A</span>
                                 "Where are you based?"
                             </button>
-                            <button class="answer-button" data-correct="true">
-                                <span class="option-letter">B</span>
+<button class="answer-button" data-correct="true">
+<span class="option-letter">B</span>
                                 "Are you married?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">C</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">C</span>
                                 "What do you do in your role?"
                             </button>
-                            <button class="answer-button" data-correct="false">
-                                <span class="option-letter">D</span>
+<button class="answer-button" data-correct="false">
+<span class="option-letter">D</span>
                                 "Have you worked with this team before?"
                             </button>
+</div>
+<div class="feedback">
+<strong>Feedback:</strong> Questions about marital status are considered too personal in most professional contexts. Focus on work-related topics or general location instead.
                         </div>
-                        <div class="feedback">
-                            <strong>Feedback:</strong> Questions about marital status are considered too personal in most professional contexts. Focus on work-related topics or general location instead.
-                        </div>
-                        <button class="check-answer-btn">Check Answer</button>
-                    </div>
-                    
-                    <div class="button-container">
-                        <button disabled class="back-button nav-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
+<button class="check-answer-btn">Check Answer</button>
+</div>
+<div class="button-container">
+<button class="back-button nav-btn" disabled="">
+<svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
                             Previous
                         </button>
-                        <button class="next-button nav-btn" onclick="scrollToSection('section2')" disabled id="next-btn-1">
+<button class="next-button nav-btn" disabled="" id="next-btn-1" onclick="scrollToSection('section2')">
                             Next Section
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2: Starting the Meeting -->
-            <div id="section2" class="section">
-                <div class="quiz-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"/>
-                            </svg>
-                        </div>
-
-  <!-- Make sure script.js is in the same folder -->
-  <script src="script.js"></script>
-</body>
+                            <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 2: Starting the Meeting -->
+<div class="section" id="section2">
+<div class="quiz-section">
+<div class="section-header">
+<div class="section-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-4h-2V9h2V7h2v2h2v4h-2v4z"></path>
+</svg>
+</div>
+<!-- Make sure script.js is in the same folder -->
+<script src="script.js"></script>
+</div><div class="question-container"><div class="question">You’re leading the meeting. Which opening phrase is most professional and inclusive?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Let’s just get through this quickly.</button><button class="answer-button" data-correct="true"><span class="option-letter">B</span> Let’s jump right in—can everyone see the agenda?</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> I hope this won’t take too long.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> I’m sure nobody wants to be here, so let’s be fast.</button></div><div class="feedback">Feedback: Inclusive and clear opening sets a professional tone.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">You don’t agree with a colleague’s suggestion. What’s the most tactful response?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> I completely disagree with that.</button><button class="answer-button" data-correct="false"><span class="option-letter">B</span> That idea won’t work.</button><button class="answer-button" data-correct="true"><span class="option-letter">C</span> I understand your point, but have we considered another approach?</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> That’s not realistic in our situation.</button></div><div class="feedback">Feedback: Acknowledge and propose tactfully—balance is key.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">You want to politely express your view. Which of these is too weak or indirect?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> In my view, we could try a different strategy.</button><button class="answer-button" data-correct="true"><span class="option-letter">B</span> I just have this little idea, maybe it's silly, but…</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> I believe there's a more efficient way to do this.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> One possible option we might explore is…</button></div><div class="feedback">Feedback: Avoid language that undermines your ideas.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">Which phrase is best for politely interrupting someone to add your point?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Wait, I need to say something here.</button><button class="answer-button" data-correct="false"><span class="option-letter">B</span> Let me stop you for a second.</button><button class="answer-button" data-correct="true"><span class="option-letter">C</span> Sorry to jump in, but may I quickly add something?</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> I don’t think that’s right, let me explain.</button></div><div class="feedback">Feedback: Polite interruption shows respect and professionalism.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">Which of the following is most appropriate for checking that everyone understands during a meeting?</div><div class="options"><button class="answer-button" data-correct="true"><span class="option-letter">A</span> Can I just check we’re all on the same page so far?</button><button class="answer-button" data-correct="false"><span class="option-letter">B</span> You all got that, right?</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> I hope you’re following this.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> That should be clear to everyone.</button></div><div class="feedback">Feedback: Clarity and inclusiveness ensure shared understanding.</div><button class="check-answer-btn">Check Answer</button></div></div></div><div class="section" id="section3"><div class="quiz-section"><div class="section-header"><div class="section-icon"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"></path></svg></div><h2>Ending the Meeting</h2></div><div class="question-container"><div class="question">What’s the most suitable way to signal the end of the meeting while keeping things professional?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Well, that’s enough for today.</button><button class="answer-button" data-correct="true"><span class="option-letter">B</span> Let’s call it a day—unless anyone has final comments?</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> This meeting is finally over.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> We’ve run out of time, so goodbye.</button></div><div class="feedback">Feedback: Professional closures invite last input and show respect.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">You want to wrap up and confirm follow-up actions. Which phrase is best?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Let’s just hope we remember what was said.</button><button class="answer-button" data-correct="false"><span class="option-letter">B</span> So, I think we know what to do now, right?</button><button class="answer-button" data-correct="true"><span class="option-letter">C</span> To summarize, here are the next steps moving forward…</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> Anyway, we’ll see what happens.</button></div><div class="feedback">Feedback: Clear summary ensures actionable follow-up.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">What’s a strong professional closing phrase for a meeting?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Alright, enough talk.</button><button class="answer-button" data-correct="true"><span class="option-letter">B</span> Thanks for your input—great teamwork today.</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> Let’s go back to our real work now.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> See you when I see you.</button></div><div class="feedback">Feedback: Positive closure reinforces collaboration.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">You want to make sure participants feel included at the end. What should you say?</div><div class="options"><button class="answer-button" data-correct="true"><span class="option-letter">A</span> Any final thoughts before we close?</button><button class="answer-button" data-correct="false"><span class="option-letter">B</span> We’re done unless someone wants to complain.</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> Let’s end here. I’m sure there are no more questions.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> We’ve talked enough.</button></div><div class="feedback">Feedback: Inclusive questions show you value everyone’s voice.</div><button class="check-answer-btn">Check Answer</button></div><div class="question-container"><div class="question">After confirming the summary and next steps, what’s the best way to close?</div><div class="options"><button class="answer-button" data-correct="false"><span class="option-letter">A</span> Alright, goodbye.</button><button class="answer-button" data-correct="true"><span class="option-letter">B</span> Thanks again, everyone—looking forward to our next meeting.</button><button class="answer-button" data-correct="false"><span class="option-letter">C</span> Later.</button><button class="answer-button" data-correct="false"><span class="option-letter">D</span> Let’s get out of here.</button></div><div class="feedback">Feedback: Warm, professional farewells end meetings on a high note.</div><button class="check-answer-btn">Check Answer</button></div></div></div><div class="section" id="section4"><div class="quiz-section"><div class="section-header"><div class="section-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path></svg></div><h2>AI Practice Simulation</h2></div><div class="question-container"><div class="question">🎤 You are now practicing with AI:</div><div class="copy-prompt"><pre>You are my English practice partner. Let's review what I've learned about business meetings.
+Start by asking me to make small talk, then give me a business idea so I can agree or disagree politely,
+and finally help me close the meeting professionally.
+Please correct my grammar and suggest improvements as we go.</pre></div></div></div></div></div></div></body>
 </html>
