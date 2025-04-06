@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (answered) return;
                 answerButtons.forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
+                // Highlight border to indicate selection
+                btn.style.borderColor = '#0a66c2';
+                btn.style.backgroundColor = '#e6f0ff';
+                btn.style.boxShadow = '0 0 0 3px rgba(10, 102, 194, 0.3)';
             });
         });
     });
